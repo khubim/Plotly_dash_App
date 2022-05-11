@@ -43,6 +43,7 @@ DAYSORT = dict(zip(['Friday', 'Monday', 'Saturday','Sunday', 'Thursday', 'Tuesda
 
 FONT_FAMILY =  "Arial" 
 app = dash.Dash(__name__)
+server=app.server
 
   
 df_acc = 'https://raw.githubusercontent.com/khubim/Plotly_dash_app/main/Traffic_accidents.csv'
