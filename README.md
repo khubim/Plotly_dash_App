@@ -2,4 +2,4 @@
 
 A Plotly Dash app to explore traffic accidents in the UK.
 
-Available at 
+Available at heroku app
