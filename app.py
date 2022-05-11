@@ -45,8 +45,8 @@ FONT_FAMILY =  "Arial"
 app = dash.Dash(__name__)
 
   
-csvLoc = 'https://raw.githubusercontent.com/khubim/Plotly_dash_app/main/Traffic_accidents.csv'
-acc = read_csv(csvLoc, index_col = 0).dropna(how='any', axis = 0)
+df_acc = 'https://raw.githubusercontent.com/khubim/Plotly_dash_app/main/Traffic_accidents.csv'
+acc = read_csv(df_acc, index_col = 0).dropna(how='any', axis = 0)
 
 acc = acc[~acc['Speed_limit'].isin([0, 10])]
 
@@ -112,7 +112,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},children=[
             html.Div(
                 '''Select the day of the accident:''',
                 style={
-                    'text': '#ffffff',
+                    
                     'paddingTop' : 20,
                     'paddingBottom' : 10
                 }
@@ -133,7 +133,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},children=[
             html.Div(
                 '''Select the hours in which the accident occurred (24h clock):''',
                 style={
-                    'text': '#ffffff',
+                    
                     'paddingTop' : 20,
                     'paddingBottom' : 10
                 }
@@ -217,7 +217,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},children=[
     Output(component_id='bar', component_property='figure'),
     [Input(component_id='severityChecklist', component_property='value'),
     Input(component_id='dayChecklist', component_property='value'),
-    Input(component_id='hourSlider', component_property='value'),
+    Input(component_id='hourSlider', component_property='value')
     ]
 )
 def updateBarChart(severity, weekdays, time):
@@ -250,9 +250,9 @@ def updateBarChart(severity, weekdays, time):
             'hoverinfo' : 'text',
             'marker' : {
                 'color' : SEVERITY_LOOKUP[sev], 
-            'line' : {'width' : 1,
+            'line' : {'width' : 2,
                       'color' : '#333'}},
-            'name' : sev,
+            'name' : sev
         })  
         
     fig = {'data' : traces,
@@ -291,7 +291,7 @@ def updateBarChart(severity, weekdays, time):
     Output(component_id='heatmap', component_property='figure'),
     [Input(component_id='severityChecklist', component_property='value'),
     Input(component_id='dayChecklist', component_property='value'),
-    Input(component_id='hourSlider', component_property='value'),
+    Input(component_id='hourSlider', component_property='value')
     ]
 )
 def updateHeatmap(severity, weekdays, time):
@@ -307,6 +307,7 @@ def updateHeatmap(severity, weekdays, time):
 
     
     def heatmapText(row):
+
         return 'Day : {}<br>Time : {:02d}:00<br>Number of casualties: {}'.format(row['Day_of_Week'],
                                                                                 row['Hour'], 
                                                                                 row['Number_of_Casualties'])
