@@ -1,6 +1,6 @@
 import os
 from random import randint
-from tkinter import CENTER
+
 
 import dash
 
@@ -14,7 +14,7 @@ import dash_html_components as html
 from pandas import read_csv, DataFrame
 
 
-external_stylesheets = [dbc.themes.LUX]
+#external_stylesheets = [dbc.themes.LUX]
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -250,7 +250,7 @@ def updateBarChart(severity, weekdays, time):
             'hoverinfo' : 'text',
             'marker' : {
                 'color' : SEVERITY_LOOKUP[sev], 
-            'line' : {'width' : 2,
+            'line' : {'width' : 1,
                       'color' : '#333'}},
             'name' : sev,
         })  
