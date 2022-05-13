@@ -2,4 +2,4 @@
 
 A Plotly Dash app to explore traffic accidents in the UK.
 
-Available at heroku app
+Available at heroku app:https://khubim-app.herokuapp.com/
